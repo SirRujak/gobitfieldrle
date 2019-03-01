@@ -33,11 +33,15 @@ func (bitfield *Bitfield) Init(dataSlice *([]uint8), dataNumber *int, opts *Bitf
 	return nil
 }
 
+func (bitfield *Bitfield) Length() int {
+	return len(bitfield.Buffer)
+}
+
 func getByteSize(num int) int {
 	var out int
 	out = num >> 3
 	if num%8 != 0 {
-		out += 1
+		out++
 	}
 	return out
 }
